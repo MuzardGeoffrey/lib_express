@@ -1,0 +1,28 @@
+extends layouts/layoutDashboard
+
+
+block content
+    
+    div(class="d-flex justify-content-between")
+        a(href="dashboard/article/" class='btn btn-primary') Création
+        a(href="" class='btn btn-primary') Catégories
+    table(class='table')
+        tbody
+            if articles !=0
+                each article in articles
+                    tr
+                        td= article.title
+                        td 
+                        
+                            div(class="d-flex justify-content-end")
+                                a(href=`dashboard/article/${article.id}`  class='btn btn-primary') Editer
+                                a(href=`dashboard/delete/${article.id}`  class='btn btn-primary') Supprimer
+    div
+        a(href="") 
+            span(class="glyphicon glyphicon-chevron-left")
+        a(href="")
+            span(class="glyphicon glyphicon-chevron-right")
+
+       
+               
+
