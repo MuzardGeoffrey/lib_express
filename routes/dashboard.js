@@ -70,5 +70,16 @@ dashboardRouter
     });
 })
 
+.delete('/article/:id', (req, res, next) => {
+    if (isNaN(id)) {
+        res.render('article', { title: 'Article' });
+        return;
+    }
+    const request = `DELETE article WHERE id = ${id}`;
+    mySqlConnection.query(request, (err, rows, fields) => {
+        if (err) throw err;
+        res.send("200");
+    });
+})
 //${escape(content)} pour eviter les injection de code
 //windows.onload = fonction(){mettre votre code ici(tinymce.init)}

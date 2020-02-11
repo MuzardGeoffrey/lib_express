@@ -8,8 +8,6 @@ window.onload = () => {
     idArticle = document.getElementById('id');
 };
 
-
-
 function putFromArticle() {
     const id = idArticle.value;
     let article = {"title" : title.value, "content" : content.value};
@@ -28,4 +26,3 @@ function putFromArticle() {
            }
         }); 
 }
-

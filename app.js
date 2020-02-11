@@ -8,6 +8,7 @@ import bodyParser from 'body-parser'
 
 import { indexRouter } from './routes/index.js';
 import { dashboardRouter } from './routes/dashboard.js';
+import { loginRouter } from './routes/login.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

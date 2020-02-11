@@ -1,0 +1,9 @@
+extend layouts/layout
+
+block content
+    h1= title
+    form(action="/article", method="POST")
+        div(class="form-group")
+            input(type="text", placeholder="titre de l'article" name="title" class="form-control")
+            textarea(name="content", cols="30", rows="10")
+            button(type="submit" class="btn btn-primary") Ajouter
