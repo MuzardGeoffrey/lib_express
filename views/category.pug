@@ -1,0 +1,14 @@
+extend layouts/layoutDashboard
+
+block content
+    if tag 
+        title= tag
+        form(action=``, method="")
+            div(class="form-group")
+                input(type="text", placeholder="titre de la categorie" name="tag" id="tag" class="form-control" value= tag)
+                button(type="button" class="btn btn-primary" onclick="putCategory()") Modifier
+    else
+        form(action="/dashboard/category", method="POST")
+            div(class="form-group")
+                input(type="text", placeholder="titre de la categorie" name="tag" class="form-control")
+                button(type="submit" class="btn btn-primary") Ajouter

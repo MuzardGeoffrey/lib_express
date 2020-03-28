@@ -5,10 +5,14 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import mysql from 'mysql';
 import bodyParser from 'body-parser'
+import jwt from 'jsonwebtoken';
+import fs from 'fs';
 
 import { indexRouter } from './routes/index.js';
 import { dashboardRouter } from './routes/dashboard.js';
-import { loginRouter } from './routes/login.js';
+import { articleRouter } from './routes/article.js';
+import { categoryRouter } from './routes/category.js';
+import { frontArticleRouter } from './routes/frontArticle.js';
 
 const app = express();
 
@@ -27,8 +31,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/login', loginRouter);
+app.use('/article', frontArticleRouter);
+app.use('/dashboard', controlAuthentification, dashboardRouter);
+app.use('/dashboard/article', controlAuthentification, articleRouter);
+app.use('/dashboard/category', controlAuthentification, categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,10 +52,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(3000, () => {
-//   console.log('Server listening...');
-// });
-
 export const mySqlConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -65,3 +67,15 @@ mySqlConnection.connect(err => {
     })
   }
 })
+
+function controlAuthentification(req, res, next){
+ try {
+    const token = req.headers.cookie.split('auth=')[1];
+    console.log(token);
+    let privateKey = fs.readFileSync('private.pem', 'utf8');
+    jwt.verify(token, privateKey, { algorithm: ['HS256'] });
+    next();
+} catch {
+    res.redirect('/login')
+  }
+}

@@ -6,12 +6,11 @@ block content
         form(action=``, method="")
             div(class="form-group")
                 input(type="text", placeholder="titre de l'article" name="title" id="title" class="form-control" value= title)
-                textarea(name="content", cols="30", rows="10" id="content")= content
-                input(type="number", name="id" id="id" value= id)
-                button(type="button" class="btn btn-primary" onclick="putFromArticle()") Modifier
+                textarea(name="content" id="content" cols="30" rows="10" )= content
+                button(type="button" class="btn btn-primary" onclick="putArticle()") Modifier
     else
-        form(action="/article", method="POST")
+        form(action="/dashboard/article", method="POST")
             div(class="form-group")
                 input(type="text", placeholder="titre de l'article" name="title" class="form-control")
-                textarea(name="content", cols="30", rows="10")
+                textarea(name="content" id="content" cols="30" rows="10" )
                 button(type="submit" class="btn btn-primary") Ajouter

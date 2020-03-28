@@ -1,5 +1,15 @@
-extends layout
+extends layouts/layout
+
 
 block content
-  h1= title
-  p Welcome to #{title}
+    
+      div(class="card")
+        if articles !=0
+          each article in articles
+            div(class="card")
+              div(class="card-header")
+                h1(class="card-title")= article.title
+              div(class="card-body")
+                p= article.content
+              div(class="card-footer")
+                a(href=`article/${article.id}` class="btn btn-primary") Detail

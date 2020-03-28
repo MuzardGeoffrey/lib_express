@@ -1,0 +1,19 @@
+extends layouts/layoutDashboard
+
+
+block content
+    
+    div(class="d-flex justify-content-between")
+        a(href="/dashboard/category/create" class='btn btn-primary') Création
+        a(href="/dashboard" class='btn btn-primary') Article
+    table(class='table')
+        tbody
+            if categorys !=0
+                each category in categorys
+                    tr
+                        td= category.tag
+                        td 
+                        
+                            div(class="d-flex justify-content-end")
+                                a(href=`/dashboard/category/${category.id}`  class='btn btn-primary') Editer
+                                button(type="button" class="btn btn-primary" onclick=`deleteCategory(${category.id})`) Supprimer
