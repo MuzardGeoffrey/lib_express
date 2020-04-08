@@ -1,0 +1,17 @@
+extend layouts/layoutDashboard
+
+block content
+    div(class="card")
+        div(class="card-header")
+                h1 Connexion
+        form(method="POST" action="/login")
+            div(class="card-body")
+                div(class="form-group")
+                    label(for="login") Login
+                    input(id="login" class="form-control" name="login" placeholder="login")
+                div(class="form-group")
+                    label(for="password") Password
+                    input(id="password" class="form-control" name="password" placeholder="password")
+            div(class="card-footer")
+                    button(type="submit" class="btn btn-primary") Connexion
+                    a(href="/" class="btn btn-primary") Annuler

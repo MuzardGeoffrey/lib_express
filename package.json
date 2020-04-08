@@ -1,0 +1,29 @@
+{
+  "name": "lib-express",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "watch": "echo 'Launching server in watch mode...' && nodemon -e js  --experimental-modules ",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "npm-watch": "^0.6.0",
+    "pug": "^2.0.4",
+    "tinymce": "^5.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

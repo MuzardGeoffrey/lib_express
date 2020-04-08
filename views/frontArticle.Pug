@@ -1,0 +1,11 @@
+extend layouts/layout
+
+block content
+    div(class="card")
+        div(class="card-header")
+            h1(class="card-title")= title
+            p= `Ecrit le ${date} par ${user}`
+        div(class="card-body")
+            p= content
+        div(class="card-footer")
+            a(href="/" class="btn btn-primary") Retour
